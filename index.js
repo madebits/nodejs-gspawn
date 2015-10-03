@@ -59,7 +59,7 @@ var gspawn = function (options, cb) {
         var tool = options.resolveCmd ? which.sync(options.cmd) : path.resolve(options.cmd);
         var toolArgs = toArray(options.args);
         var toolArgsStr = toolArgs.join(' ');
-        var toolOptions = Object.assign({}, options.options || {});
+        var toolOptions = options.options || {};
         if(options.autoCwd) toolOptions.cwd = path.dirname(tool);
 
         if(options.logCall) {
