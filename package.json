@@ -1,0 +1,21 @@
+{
+  "name": "gspawn",
+  "version": "0.0.1",
+  "description": "Spawn external tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
+  "author": "madebits <contact@madebits.33mail.com> (https://github.com/madebits/)",
+  "license": "MIT",
+  "dependencies": {
+    "which": "^1.2.2"
+  },
+  "devDependencies": {
+    "tape": "^4.4.0"
+  },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/madebits/nodejs-gspawn.git"
+  }
+}
