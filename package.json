@@ -1,6 +1,6 @@
 {
   "name": "gspawn",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Library to easy run external tools",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,13 @@
   "repository" :
   { "type" : "git"
   , "url" : "https://github.com/madebits/nodejs-gspawn.git"
-  }
+  },
+  "keywords": [
+    "spawn",
+    "exec",
+    "child",
+    "shell",
+    "task",
+    "process"
+  ]
 }
