@@ -115,7 +115,7 @@ var gspawn = function (options, cb) {
             var err = exitCode === null ? new Error(errMsg) : null;
             if (!err
                 && options.hasOwnProperty('expectedExitCode')
-                && (options.expectedExitCode != exitCode)) {
+                && (options.expectedExitCode !== exitCode)) {
                 err = new Error(errMsg);
             }
             doneCb(err, exitCode, signal);

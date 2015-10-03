@@ -17,6 +17,21 @@ test('bash call', function(t) {
     t.isNot(p, null);
 });
 
+test('expected exit code', function(t) {
+    var p = gspawn({
+        cmd: 'bash',
+        args: ['-c', 'ls -l'],
+        resolveCmd: true,
+        collectStdout: true,
+        logCall: true,
+        expectedExitCode: 1
+    }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
+        t.isNot(err, null);
+        t.end();
+    });
+    t.isNot(p, null);
+});
+
 test('node call', function(t) {
     var p = gspawn({
         cmd: 'node',
@@ -114,6 +129,21 @@ test('env', function(t) {
         options: { env: env }
     }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
         t.pass(stdoutTxt.indexOf(txt) >= 0);
+        t.end(err);
+    });
+});
+
+test('npm run call', function(t) {
+    var p = gspawn({
+        cmd: 'npm',
+        args: ['run', 'testCmd'],
+        resolveCmd: true,
+        collectStdout: true,
+        collectStderr: true,
+        logCall: true
+    }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
+        t.pass(stdoutTxt.indexOf('aha') >= 0);
+        t.is(exitCode, 0);
         t.end(err);
     });
 });

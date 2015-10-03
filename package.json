@@ -1,10 +1,11 @@
 {
   "name": "gspawn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Spawn external tools",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js",
+    "testCmd": "echo 'abc'"
   },
   "author": "madebits <contact@madebits.33mail.com> (https://github.com/madebits/)",
   "license": "MIT",
