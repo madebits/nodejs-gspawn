@@ -30,7 +30,7 @@ var gspawn = function (options, cb) {
 
     var log = function (data, source) {
         if (options.log) {
-            options.log(data, source, defaultLogger);
+            options.log(data, source, defaultLogger, options);
             return;
         }
         else defaultLogger(data, source);

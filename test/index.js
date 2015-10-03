@@ -57,9 +57,10 @@ test('log', function(t) {
         args: ['./test/test.js'],
         resolveCmd: true,
         logCall: true,
-        log: function(data, source, defaultLog) {
+        log: function(data, source, defaultLog, options) {
             t.isNot(data, null);
             t.isNot(defaultLog, null);
+            t.isNot(options, null);
             t.pass(source >=0 && source <= 2);
             defaultLog(data, source);
         }
