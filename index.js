@@ -27,6 +27,8 @@ var gspawn = function (options, cb) {
     var stdOutTxt = [];
     var stdErrTxt = [];
     var cbCalled = false;
+    var stdoutLen = 0;
+    var stderrLen = 0;
 
     var log = function (data, source) {
         if (options.log) {
@@ -91,14 +93,20 @@ var gspawn = function (options, cb) {
 
         proc.stdout.on('data', function (data) {
             if (options.collectStdout) {
-                stdOutTxt.push(data);
+                if(data) stdoutLen += data.length;
+                if(!options.collectStdoutMax || (stdoutLen < options.collectStdoutMax)) {
+                    stdOutTxt.push(data);
+                }
             }
             log(data, 1);
         });
 
         proc.stderr.on('data', function (data) {
             if (options.collectStderr) {
-                stdErrTxt.push(data);
+                if(data) stderrLen += data.length;
+                if(!options.collectStderrMax || (stderrLen < options.collectStderrMax)) {
+                    stdErrTxt.push(data);
+                }
             }
             log(data, 2);
         });

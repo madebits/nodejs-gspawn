@@ -1,7 +1,7 @@
 {
   "name": "gspawn",
-  "version": "0.0.3",
-  "description": "Spawn external tools",
+  "version": "0.0.4",
+  "description": "Libray to easy run external tools",
   "main": "index.js",
   "scripts": {
     "test": "node ./test/index.js",

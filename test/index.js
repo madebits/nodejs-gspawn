@@ -9,7 +9,7 @@ test('bash call', function(t) {
         collectStdout: true,
         logCall: true
     }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
-        t.pass(stdoutTxt.length > 0);
+        t.ok(stdoutTxt.length > 0);
         t.is(stderrTxt.length, 0);
         t.is(exitCode, 0);
         t.end(err);
@@ -38,14 +38,15 @@ test('node call', function(t) {
         args: ['./test/test.js'],
         resolveCmd: true,
         collectStdout: true,
+        collectStdoutMax: 15,
         collectStderr: true,
         logCall: true
     }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
-        t.pass(stdoutTxt.indexOf('Hello World!') >= 0);
-        t.pass(stdoutTxt.indexOf('aaa') >= 0);
-        t.pass(stderrTxt.indexOf('Hmm!') >= 0);
-        t.pass(stderrTxt.indexOf('bbb') >= 0);
-        t.pass(stderrTxt.indexOf('aaa') < 0);
+        t.ok(stdoutTxt.indexOf('Hello World!') >= 0);
+        t.ok(stdoutTxt.indexOf('aaa') < 0);
+        t.ok(stderrTxt.indexOf('Hmm!') >= 0);
+        t.ok(stderrTxt.indexOf('bbb') >= 0);
+        t.ok(stderrTxt.indexOf('aaa') < 0);
         t.is(exitCode, 0);
         t.end(err);
     });
@@ -129,7 +130,7 @@ test('env', function(t) {
         collectStdout: true,
         options: { env: env }
     }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
-        t.pass(stdoutTxt.indexOf(txt) >= 0);
+        t.ok(stdoutTxt.indexOf(txt) >= 0);
         t.end(err);
     });
 });
@@ -143,7 +144,7 @@ test('npm run call', function(t) {
         collectStderr: true,
         logCall: true
     }, function(err, exitCode, signal, stdoutTxt, stderrTxt) {
-        t.pass(stdoutTxt.indexOf('aha') >= 0);
+        t.ok(stdoutTxt.indexOf('abc') >= 0);
         t.is(exitCode, 0);
         t.end(err);
     });
